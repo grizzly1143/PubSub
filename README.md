@@ -1,2 +1,2 @@
 # PubSub
-Publisher Subscriber pattern C++ realization with test on Gtest
+Publisher Subscriber pattern C++ implementation with test on Gtest
