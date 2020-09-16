@@ -6,7 +6,7 @@
 class Subscriber {
 public:
     Subscriber (const std::string& name);
-    void receive_event (const std::string& event_text);
+    void receive_event (const std::string& pub_name, const std::string& event_text);
 private:
     std::string sub_name;
 };
