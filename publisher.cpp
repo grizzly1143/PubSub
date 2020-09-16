@@ -2,7 +2,7 @@
 
 Publisher::Publisher (const std::string& name) : pub_name(name) {}
 
-bool Publisher::subsribe(Subscriber *sub) {
+bool Publisher::subsribe(std::shared_ptr<Subscriber> sub) {
     if (sub == nullptr)
         return false;
     subs_list.push_back(sub);
@@ -12,14 +12,13 @@ bool Publisher::publish(const std::string &message) {
     if (message.empty()) {
         return false;
     }
-    std::list<Subscriber*>::iterator p;
-    for (p = subs_list.begin(); p != subs_list.end(); p++) {
-        (*p)->receive_event(pub_name, message);
+    for (const auto &p : subs_list) {
+        p->receive_event(pub_name, message);
     }
     return true;
 }
 
-bool Publisher::unsubscribe(Subscriber * const sub) {
+bool Publisher::unsubscribe(std::shared_ptr<Subscriber> sub) {
     if (sub == nullptr) {
         return false;
     }
@@ -28,9 +27,8 @@ bool Publisher::unsubscribe(Subscriber * const sub) {
 }
 
 void Publisher::print_subs() {
-    std::list<Subscriber*>::iterator p;
-    for (p = subs_list.begin(); p != subs_list.end(); p++) {
-        std::cout << (*p)->get_name() << " ";
+    for (const auto &p : subs_list) {
+        std::cout << p->get_name() << " ";
     }
     std::cout << std::endl;
 }

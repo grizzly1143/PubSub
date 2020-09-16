@@ -2,18 +2,19 @@
 #define PUBLSHERSUBSCRIBER_PUBLISHER_H
 
 #include <list>
+#include <memory>
 #include "subscriber.h"
 
 class Publisher {
 public:
     Publisher (const std::string& name);
     bool publish(const std::string& message);
-    bool subsribe(Subscriber * sub);
-    bool unsubscribe(Subscriber* const sub);
+    bool subsribe(std::shared_ptr<Subscriber> sub);
+    bool unsubscribe(std::shared_ptr<Subscriber> sub);
     void print_subs();
 private:
     std::string pub_name;
-    std::list<Subscriber*> subs_list;
+    std::list<std::shared_ptr<Subscriber>> subs_list;
 };
 
 #endif

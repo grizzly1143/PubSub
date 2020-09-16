@@ -1,5 +1,7 @@
 #include "subscriber.h"
 
+Subscriber::Subscriber (const std::string& name) : sub_name(name){};
+
 bool Subscriber:: receive_event (const std::string& pub_name, const std::string& event_text) {
     if (pub_name.empty()) {
         return false;
