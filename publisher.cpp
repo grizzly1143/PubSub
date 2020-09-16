@@ -1,5 +1,7 @@
 #include "publisher.h"
 
+Publisher::Publisher (const std::string& name) : pub_name(name) {}
+
 bool Publisher::subsribe(Subscriber *sub) {
     if (sub == nullptr)
         return false;

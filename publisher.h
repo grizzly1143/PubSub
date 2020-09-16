@@ -6,7 +6,7 @@
 
 class Publisher {
 public:
-    explicit Publisher (const std::string& name) : pub_name(name) {}
+    Publisher (const std::string& name);
     bool publish(const std::string& message);
     bool subsribe(Subscriber * sub);
     bool unsubscribe(Subscriber* const sub);

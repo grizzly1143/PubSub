@@ -7,7 +7,7 @@ bool Subscriber:: receive_event (const std::string& pub_name, const std::string&
     if (event_text.empty()) {
         return false;
     }
-    std:: cout << "Received publication from: " << pub_name << " with text: " << event_text << std::endl;
+    std:: cout << sub_name << " :: " << "Received publication from: " << pub_name << " with text: " << event_text << std::endl;
     return true;
 }
 
