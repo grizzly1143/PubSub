@@ -3,4 +3,4 @@ project(PublsherSubscriber)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(PublsherSubscriber main.cpp subscriber.h publisher.h subscriber.cpp)
+add_executable(PublsherSubscriber main.cpp subscriber.h publisher.h subscriber.cpp publisher.cpp)
