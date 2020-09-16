@@ -12,6 +12,9 @@ bool Publisher::publish(const std::string &message) {
     if (message.empty()) {
         return false;
     }
+    if (subs_list.empty()) {
+        return false;
+    }
     for (const auto &p : subs_list) {
         p->receive_event(pub_name, message);
     }

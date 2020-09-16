@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.13)
-project(PublsherSubscriber)
+project(PublsherSubscriberTest)
 
 set(CMAKE_CXX_STANDARD 14)
-
-add_executable(PublsherSubscriber main.cpp subscriber.h publisher.h subscriber.cpp publisher.cpp tests.cpp)
 
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -30,9 +28,13 @@ add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
         ${CMAKE_CURRENT_BINARY_DIR}/googletest-build
         EXCLUDE_FROM_ALL)
 
+# The gtest/gtest_main targets carry header search path
+# dependencies automatically when using CMake 2.8.11 or
+# later. Otherwise we have to add them here ourselves.
 include_directories("${gtest_SOURCE_DIR}/include")
 
+add_library(PublsherSubscriber subscriber.h publisher.h subscriber.cpp publisher.cpp)
 # Now simply link against gtest or gtest_main as needed. Eg
 add_executable(example tests.cpp)
-target_link_libraries(example gtest_main)
+target_link_libraries(example gtest_main PublsherSubscriber)
 add_test(NAME example_test COMMAND example)
