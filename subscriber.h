@@ -5,8 +5,8 @@
 
 class Subscriber {
 public:
-    Subscriber (const std::string& name);
-    bool receive_event (const std::string& pub_name, const std::string& event_text);
+    Subscriber(std::string name);
+    bool receive_event(const std::string& pub_name, const std::string& event_text);
     std::string get_name();
     std::string get_last_message();
 private:

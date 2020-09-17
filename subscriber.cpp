@@ -1,10 +1,10 @@
 #include "subscriber.h"
 
-Subscriber::Subscriber (const std::string& name) : sub_name(name){
+Subscriber::Subscriber(std::string name) : sub_name(std::move(name)) {
     last_recieved = "";
-};
+}
 
-bool Subscriber:: receive_event (const std::string& pub_name, const std::string& event_text) {
+bool Subscriber:: receive_event(const std::string& pub_name, const std::string& event_text) {
     if (pub_name.empty()) {
         return false;
     }

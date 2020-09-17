@@ -1,11 +1,12 @@
 #include "publisher.h"
 
-Publisher::Publisher (const std::string& name) : pub_name(name) {}
+Publisher::Publisher(std::string name) : pub_name(std::move(name)) {}
 
-bool Publisher::subsribe(std::shared_ptr<Subscriber> sub) {
+bool Publisher::subsribe(const std::shared_ptr<Subscriber>& sub) {
     if (sub == nullptr)
         return false;
     subs_list.push_back(sub);
+    return true;
 }
 
 bool Publisher::publish(const std::string &message) {
@@ -21,7 +22,7 @@ bool Publisher::publish(const std::string &message) {
     return true;
 }
 
-bool Publisher::unsubscribe(std::shared_ptr<Subscriber> sub) {
+bool Publisher::unsubscribe(const std::shared_ptr<Subscriber>& sub) {
     if (sub == nullptr) {
         return false;
     }

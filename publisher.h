@@ -7,10 +7,10 @@
 
 class Publisher {
 public:
-    Publisher (const std::string& name);
+    Publisher(std::string name);
     bool publish(const std::string& message);
-    bool subsribe(std::shared_ptr<Subscriber> sub);
-    bool unsubscribe(std::shared_ptr<Subscriber> sub);
+    bool subsribe(const std::shared_ptr<Subscriber>& sub);
+    bool unsubscribe(const std::shared_ptr<Subscriber>& sub);
     void print_subs();
 private:
     std::string pub_name;
